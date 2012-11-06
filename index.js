@@ -21,14 +21,15 @@ function header (stream) {
     var m
     if(!(m = /\n/.exec(soFar))) return
     var meta = JSON.parse(soFar.substring(0, m.index))
-    soFar = soFar.substring(m.index)
+    //+ 1 to get past the newline
+    soFar = soFar.substring(m.index + 1)
     stream.emit = emit
     stream.meta = meta
     stream.emit('header', meta)
     //check that the stream is still readable,
     //it may have been ended during the 'header'
     //event.
-    if(soFar != '' && stream.readable)
+    if('' !== soFar  && stream.readable)
       stream.emit('data', soFar)
   }
 
