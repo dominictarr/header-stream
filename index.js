@@ -47,7 +47,7 @@ function header (stream) {
     if(_meta) merge(meta, _meta)
     stream.write = write
     stream.write(JSON.stringify(meta)+'\n')    
-  })
+  }
 
   stream.write = function (data) {
     stream.writeHead()
