@@ -35,7 +35,7 @@ function header (stream) {
 
   var meta = {}
 
-  stream.setHeader = function (key) {
+  stream.setHeader = function (key, val) {
     if('string' === typeof key)
       meta[key] = val
     else
