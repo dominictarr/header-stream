@@ -34,7 +34,8 @@ function header (stream) {
   }
 
   var meta = {}
-  stream.setHeader = function (key, val) {
+
+  stream.setHeader = function (key) {
     if('string' === typeof key)
       meta[key] = val
     else
@@ -42,9 +43,14 @@ function header (stream) {
     return stream
   }
 
-  stream.write = function (data) {
+  stream.writeHead(_meta) {
+    if(_meta) merge(meta, _meta)
     stream.write = write
-    stream.write(JSON.stringify(meta)+'\n')
+    stream.write(JSON.stringify(meta)+'\n')    
+  })
+
+  stream.write = function (data) {
+    stream.writeHead()
     return stream.write(data)
   }
 
